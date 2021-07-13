@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <title>NodeJS+Python</title>
+</head>
+<body>
+    <div class="container">
+        <form class="mt-3" onsubmit="send(event)">
+            <div class="form-group">
+              <label for="fname">First name</label>
+              <input type="text" class="form-control" id="fname" placeholder="First name" required>
+            </div>
+            <div class="form-group">
+                <label for="mname">Middle name</label>
+                <input type="text" class="form-control" id="mname" placeholder="Middle name" required>
+              </div>
+            <div class="form-group">
+              <label for="lname">Last name</label>
+              <input type="text" class="form-control" id="lname" placeholder="Last name" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <div class="mt-3" id="res">
+
+        </div>
+    </div>
+    
+
+    
+</body>
+
+<script>
+    function send(e){
+        e.preventDefault();
+        data = {
+            fname:$('#fname').val(),
+            mname:$('#mname').val(),
+            lname:$('#lname').val()
+        }
+        $.post('/python',data,(resData)=>{
+            $('#res').html(resData)
+            console.log(resData)
+        })
+    }
+</script>
+
+</html>
